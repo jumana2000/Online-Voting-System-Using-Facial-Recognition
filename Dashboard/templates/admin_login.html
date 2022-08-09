@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Admin - Login</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+      <link rel="icon" href="{% static 'vote/images/fevicon.png' %}" type="image/png" />
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'vote/css/bootstrap.min.css' %}" />
+      <!-- site css -->
+      <link rel="stylesheet" href="{% static 'vote/style.css' %}" />
+      <!-- responsive css -->
+      <link rel="stylesheet" href="{% static 'vote/css/responsive.css' %}" />
+      <!-- color css -->
+      <link rel="stylesheet" href="{% static 'vote/css/colors.css' %}" />
+      <!-- select bootstrap -->
+      <link rel="stylesheet" href="{% static 'vote/css/bootstrap-select.css' %}" />
+      <!-- scrollbar css -->
+      <link rel="stylesheet" href="{% static 'vote/css/perfect-scrollbar.css' %}" />
+      <!-- custom css -->
+      <link rel="stylesheet" href="{% static 'vote/css/custom.css' %}" />
+      <!-- calendar file css -->
+      <link rel="stylesheet" href="{% static 'vote/js/semantic.min.css' %}" />
+
+   </head>
+   <body class="inner_page login">
+      <div class="full_container">
+         <div class="container">
+            <div class="center verticle_center full_height">
+               <div class="login_section" style="min-height: 200px;">
+                  <div class="login_form">
+                    <h1 class="text-center"><b>Sign In</b></h1>
+                     <form method="post" action="{% url 'ad_login' %}" class="m-3">
+                        {% csrf_token %}
+                        <fieldset>
+                           <div class="field">
+                              <label class="label_field">Username</label>
+                              <input type="text" name="username" placeholder="Username" />
+                           </div>
+                           <div class="field">
+                              <label class="label_field">Password</label>
+                              <input type="password" name="password" placeholder="Password" />
+                           </div>
+                         
+                           <div class="field margin_0">
+                              <label class="label_field hidden">hidden label</label>
+                              <button class="main_bt">Sing In</button>
+                           </div>
+                        </fieldset>
+                     </form>
+                     
+                     <div class="text-center">{{msg}}</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- jQuery -->
+      <script src="{% static 'vote/js/jquery.min.js' %}"></script>
+      <script src="{% static 'vote/js/popper.min.js' %}"></script>
+      <script src="{% static 'vote/js/bootstrap.min.js' %}"></script>
+      <!-- wow animation -->
+      <script src="{% static 'vote/js/animate.js' %}"></script>
+      <!-- select country -->
+      <script src="{% static 'vote/js/bootstrap-select.js' %}"></script>
+      <!-- nice scrollbar -->
+      <script src="{% static 'vote/js/perfect-scrollbar.min.js' %}"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- custom js -->
+      <script src="{% static 'vote/js/custom.js' %}"></script>
+   </body>
+</html>

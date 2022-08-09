@@ -1,0 +1,82 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<form method="post" action="{% url 'candidate_register_data' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="candidate_id">Candidate ID</label>
+                <input type="text" class="form-control" name="candidate_id" id="candidate_id" placeholder="Enter Candidate ID">
+            </div>
+
+            <div class="form-group">
+                <label for="candidate_name">Candidate Name</label>
+                <input type="text" class="form-control" name="candidate_name" id="candidate_name" placeholder="Candidate Name">
+            </div>
+
+            <div class="form-group">
+                <label for="party_name">Party Name</label>
+                <input type="text" class="form-control" name="party_name" id="party_name" placeholder="Party Name">
+            </div>
+
+            <div class="form-group">
+                <label for="member_support">Member Support</label>
+                <input type="text" class="form-control" name="member_support" id="member_support" placeholder="Member Support">
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" name="age" id="age" placeholder="Age">
+            </div>
+
+        </div>
+ 
+        <div class="col md-6">
+           
+            <div class="form-group">
+                <label for="email-id">Email ID</label>
+                <input type="email" class="form-control" name="email_id" id="email-id" placeholder="Email ID">
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Mobile Number">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control" id="address" rows="3" name="address" placeholder="Address"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6"> 
+                    <div class="form-group ">
+                        <label for="">Candidate Photo</label>   
+                        <div class="custom-file col-md-12">
+                            <label class="custom-file-label" for="inputGroupFile02">Candidate Photo</label>
+                            <input type="file" class="custom-file-input" name="candidate_photo" id="inputGroupFile02"/>
+                        </div>
+                    </div>
+                </div>   
+
+                <div class="col-md-6">
+                    <div class="form-group ">
+                        <label for="">Party Logo</label>   
+                        <div class="custom-file col-md-12">
+                           <label class="custom-file-label" for="inputGroupFile02">Party Logo</label>
+                           <input type="file" name="party_logo" class="custom-file-input" id="inputGroupFile02"/>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+                 
+
+        </div>    
+    </div>
+
+   
+    <button type="submit" class="btn btn-primary btn-lg col-md-12">Submit</button>
+    
+</form>
+
+{% endblock %}

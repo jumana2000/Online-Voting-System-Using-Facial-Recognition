@@ -1,0 +1,52 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+       <div class="full graph_head">
+          <div class="heading1 margin_0">
+             <h2>Responsive Tables</h2>
+          </div>
+       </div>
+       <div class="table_section padding_infor_info">
+          <div class="table-responsive-sm">
+             <table class="table">
+                <thead>
+                   <tr>
+                      <th>#</th>
+                      <th>Candidate name</th>
+                      <th>Party name</th>
+                      <th>Member support</th>
+                      <th>Age</th>
+                      <th>Email</th>
+                      <th>Mobile</th>
+                      <th>Address</th>
+                      <th>Candidate photo</th>
+                      <th>Party logo</th>
+                   </tr>
+                </thead>
+                <tbody>
+                {% for i in data %}
+                   <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{i.candidate_name}}</td>
+                      <td>{{i.party_name}}</td>
+                      <td>{{i.member_support}}</td>
+                      <td>{{i.age}}</td>
+                      <td>{{i.email}}</td>
+                      <td>{{i.mobile}}</td>
+                      <td>{{i.address}}</td>
+                      <td><img src="{{i.candidate_photo.url}}" style="width: 50px; height: 50px;" alt=""></td>
+                      <td><img src="{{i.party_logo.url}}" style="width: 50px; height: 50px;" alt=""></td>
+                   </tr>
+                {% endfor %}
+                </tbody>
+             </table>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+</div>
+
+
+{% endblock %}
