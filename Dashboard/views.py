@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from  . models import *
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
+
 # Create your views here.
 def admin_index(request):
     return render(request,'admin_index.html')
@@ -52,3 +53,8 @@ def ad_login(request):
     else:
         return render(request,'admin_login.html',{'msg':'Sorry....invalid user credentials'})
    
+def admin_logout(request):
+    del request.session['username_a']
+    del request.session['password_a']
+    logout(request)
+    return redirect('admin_login')

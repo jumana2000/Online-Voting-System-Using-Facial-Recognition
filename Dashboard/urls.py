@@ -7,5 +7,6 @@ urlpatterns = [
     path('candidate_register_data',views.candidate_register_data,name='candidate_register_data'),
     path('available_candidates',views.available_candidates,name='available_candidates'),
     path('admin_login',views.admin_login,name='admin_login'),
-    path('ad_login',views.ad_login,name='ad_login')
+    path('ad_login',views.ad_login,name='ad_login'),
+    path('admin_logout',views.admin_logout,name='admin_logout')
 ]
