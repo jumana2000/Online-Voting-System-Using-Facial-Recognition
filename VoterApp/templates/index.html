@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{% static 'voterapp/css/aos.css' %}">
 
     <link rel="stylesheet" href="{% static 'voterapp/css/style.css' %}">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
   
@@ -67,6 +67,7 @@
       
     </header>
 
+    {% block content %}
     <div class="intro-section" id="home-section">
       
       <div class="slide-1" style="background-image: url({% static 'voterapp/images/hero_1.jpg' %});" data-stellar-background-ratio="0.5">
@@ -81,17 +82,31 @@
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="" method="post" class="form-box">
+                  <form action="{% url 'userRegister' %}" method="post" class="form-box" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <h3 class="h4 text-black mb-4">Sign Up</h3>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Email Addresss">
+                      <input type="file" name="my_image" value="{{my_image}}" style="display:none">
+                      <div>Capture Image <a href="{% url 'read_image' %}"><i class="fa fa-camera pt-2" style="color: #00224b; font-size:40px;"></i></a></div> 
+                     </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Username" name="username">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input type="password" class="form-control" placeholder="Password" name="password">
                     </div>
                     <div class="form-group mb-4">
-                      <input type="password" class="form-control" placeholder="Re-type Password">
+                      <input type="text" class="form-control" placeholder="Voter ID" name="voterid">
                     </div>
+                    
+                   
+                      <div class="form-group">
+                        <input type="date" class="form-control" placeholder="DOB" name="dob">
+                      </div>
+                    
+                  <div>
+                   
+                  </div>
                     <div class="form-group">
                       <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
                     </div>
@@ -488,7 +503,7 @@
       </div>
     </div>
     
-     
+     {% endblock %}
     <footer class="footer-section bg-white">
       <div class="container">
         <div class="row">

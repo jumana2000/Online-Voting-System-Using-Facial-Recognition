@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>DigiVOTE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'voterapp/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'voterapp/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'voterapp/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'voterapp/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'voterapp/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'voterapp/css/owl.theme.default.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'voterapp/css/jquery.fancybox.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'voterapp/css/bootstrap-datepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'voterapp/fonts/flaticon/font/flaticon.css' %}">
+
+    <link rel="stylesheet" href="{% static 'voterapp/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'voterapp/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+    <div class="site-wrap">
+  
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+     
+      
+      <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+        
+        <div class="container-fluid">
+          <div class="d-flex align-items-center">
+            <div class="site-logo mr-auto w-25"><a href="index.html">DigiVOTE</a></div>
+  
+            <div class="mx-auto text-center">
+              <nav class="site-navigation position-relative text-right" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
+                  <li><a href="#home-section" class="nav-link">Home</a></li>
+                  <li><a href="#courses-section" class="nav-link">Courses</a></li>
+                  <li><a href="#programs-section" class="nav-link">Programs</a></li>
+                  <li><a href="#teachers-section" class="nav-link">Teachers</a></li>
+                </ul>
+              </nav>
+            </div>
+  
+            <div class="ml-auto w-25">
+              
+            
+            </div>
+          </div>
+        </div>
+        
+      </header>
+
+      <section>
+      
+        <div style="background-color: 	#708090; width: 100%; height: 90px;">
+      
+        </div>
+    </section>
+      <section class="p-5">
+        <div class="container">
+  
+          <div class="row justify-content-center">
+            <div class="col-lg-7 mb-5 text-center">
+              <h2 class="section-title">Candidates</h2>
+              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam repellat aut neque! Doloribus sunt non aut reiciendis, vel recusandae obcaecati hic dicta repudiandae in quas quibusdam ullam, illum sed veniam!</p>
+            </div>
+          </div>
+  
+          <div class="row">
+  {% for i in data %}
+            <div class="col-md-6 col-lg-4 mb-4" style="width:349px; height: 358px;">
+              <div class="teacher text-center">
+                <img src="{{i.candidate_photo.url}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+                <div>
+                    <img src="{{i.party_logo.url}}" style="width: 50px; height: 50px;" alt="Image" class="rounded-circle">
+                    <h3 class="text-black">{{i.candidate_name}}</h3>
+                </div>
+                
+                <p class="position">Party : {{i.party_name}}</p>
+                <button class="btn btn-primary btn-pill">Vote</button> 
+                
+              </div>
+            </div>
+  {% endfor %}
+          </div>
+        </div>
+    </section>
+
+
+      <script src="{% static 'voterapp/js/jquery-3.3.1.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/jquery-migrate-3.0.1.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/jquery-ui.js' %}"></script>
+      <script src="{% static 'voterapp/js/popper.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/owl.carousel.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/jquery.stellar.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/jquery.countdown.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/bootstrap-datepicker.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/jquery.easing.1.3.js' %}"></script>
+      <script src="{% static 'voterapp/js/aos.js' %}"></script>
+      <script src="{% static 'voterapp/js/jquery.fancybox.min.js' %}"></script>
+      <script src="{% static 'voterapp/js/jquery.sticky.js' %}"></script>
+    
+      
+      <script src="{% static 'voterapp/js/main.js' %}"></script>
+</body>
+</html>
