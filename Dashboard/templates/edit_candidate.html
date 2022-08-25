@@ -3,39 +3,39 @@
 <div class="row column_title">
     <div class="col-md-12">
        <div class="page_title">
-          <h2>Candidate Registration</h2>
+          <h2>Update Candidate Details</h2>
        </div>
     </div>
  </div>
 {% endblock %}
 {% block content %}
-<form method="post" action="{% url 'candidate_register_data' %}" enctype="multipart/form-data">
+<form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="candidate_id">Candidate ID</label>
-                <input type="text" class="form-control" name="candidate_id" id="candidate_id" placeholder="Enter Candidate ID">
+                <input type="text" class="form-control" value="{{obj.candidate_id}}" name="candidate_id" id="candidate_id" placeholder="Enter Candidate ID">
             </div>
 
             <div class="form-group">
                 <label for="candidate_name">Candidate Name</label>
-                <input type="text" class="form-control" name="candidate_name" id="candidate_name" placeholder="Candidate Name">
+                <input type="text" class="form-control" name="candidate_name" value="{{obj.candidate_name}}" id="candidate_name" placeholder="Candidate Name">
             </div>
 
             <div class="form-group">
                 <label for="party_name">Party Name</label>
-                <input type="text" class="form-control" name="party_name" id="party_name" placeholder="Party Name">
+                <input type="text" class="form-control" name="party_name" value="{{obj.party_name}}" id="party_name" placeholder="Party Name">
             </div>
 
             <div class="form-group">
                 <label for="member_support">Member Support</label>
-                <input type="text" class="form-control" name="member_support" id="member_support" placeholder="Member Support">
+                <input type="text" class="form-control" name="member_support" value="{{obj.member_support}}" id="member_support" placeholder="Member Support">
             </div>
 
             <div class="form-group">
                 <label for="age">Age</label>
-                <input type="text" class="form-control" name="age" id="age" placeholder="Age">
+                <input type="text" class="form-control" name="age" id="age" value="{{obj.age}}" placeholder="Age">
             </div>
 
         </div>
@@ -44,17 +44,17 @@
            
             <div class="form-group">
                 <label for="email-id">Email ID</label>
-                <input type="email" class="form-control" name="email_id" id="email-id" placeholder="Email ID">
+                <input type="email" class="form-control" name="email_id" value="{{obj.email}}" id="email-id" placeholder="Email ID">
             </div>
 
             <div class="form-group">
                 <label for="mobile">Mobile Number</label>
-                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Mobile Number">
+                <input type="text" class="form-control" name="mobile" value="{{obj.mobile}}" id="mobile" placeholder="Mobile Number">
             </div>
 
             <div class="form-group">
                 <label for="address">Address</label>
-                <textarea class="form-control" id="address" rows="3" name="address" placeholder="Address"></textarea>
+                <textarea class="form-control" id="address" rows="3" name="address" placeholder="Address">{{i.address}}</textarea>
             </div>
 
             <div class="row">
@@ -82,8 +82,6 @@
 
         </div>    
     </div>
-
-   
     <button type="submit" class="btn btn-lg col-md-12" style="background: #ff5722; color: white;">Submit</button>
     
 </form>

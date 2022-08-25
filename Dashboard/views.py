@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from  . models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-
+from django.views.generic import ListView,DetailView,UpdateView,DeleteView
+from django.urls import reverse_lazy
 # Create your views here.
 def admin_index(request):
     return render(request,'admin_index.html')
@@ -31,9 +32,32 @@ def candidate_register_data(request):
 
         return redirect('available_candidates')
 
-def available_candidates(request):
-    data = CandidateRegister.objects.all()
-    return render(request,'available_candidates.html',{'data':data})
+class Available_Candidates(ListView):
+    model = CandidateRegister
+    template_name = 'available_candidates.html'
+    context_object_name = 'data'
+
+class View_Candidate(DetailView):
+    model = CandidateRegister
+    template_name = 'view_candidate.html'
+    context_object_name = 'i'
+
+# class Edit_Candidate(UpdateView):
+#     model = CandidateRegister
+#     template_name = 'edit_candidate.html'
+#     context_object_name = 'obj'
+#     fields = ('candidate_id','candidate_name','party_name','member_support','age','email','mobile','address','candidate_photo','party_logo')
+#     print("Update")
+#     def get_success_url(self):
+#         print("Update")
+#         return reverse_lazy('available_candidates')
+
+class delete_candidate(DeleteView):
+    model = CandidateRegister
+    success_url = reverse_lazy('available_candidates')
+
+    def get(self, *args, **kwargs):
+        return self.post(*args,**kwargs)
 
 def admin_login(request):
     return render(request,'admin_login.html')

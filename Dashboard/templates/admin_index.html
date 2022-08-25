@@ -29,6 +29,8 @@
       <link rel="stylesheet" href="{% static 'vote/css/perfect-scrollbar.css' %}" />
       <!-- custom css -->
       <link rel="stylesheet" href="{% static 'vote/css/custom.css' %}" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -42,13 +44,13 @@
                <div class="sidebar_blog_1">
                   <div class="sidebar-header">
                      <div class="logo_section">
-                        <a href="index.html"><img class="logo_icon img-responsive" src="{% static 'vote/images/logo/logo_icon.png' %}" alt="#" /></a>
+                        <a href="{% url 'admin_index' %}"><img class="logo_icon img-responsive" style="width: 100px; height:60px;" src="{% static 'vote/images/logo/logo_icon.jpg' %}" alt="#" /></a>
                      </div>
                   </div>
                   <div class="sidebar_user_info">
                      <div class="icon_setting"></div>
                      <div class="user_profle_side">
-                        <div class="user_img"><img class="img-responsive" src="{% static 'vote/images/layout_img/user_img.jpg' %}" alt="#" /></div>
+                        <div class="user_img"><img class="img-responsive" src="{% static 'vote/images/layout_img/user_img.jpg' %}" style="width: 75px; height: 75px;" alt="#" /></div>
                         <div class="user_info">
                            <h6>{{request.session.username_a}}</h6>
                            <p><span class="online_animation"></span> Online</p>
@@ -57,10 +59,10 @@
                   </div>
                </div>
                <div class="sidebar_blog_2">
-                  <h4>General</h4>
+                  <h4>Welcome To DigiVote</h4>
                   <ul class="list-unstyled components">
                      <li class="active">
-                        <a href="{% url 'admin_index' %}" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
+                        <a href="{% url 'admin_index' %}"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
                        
                      </li>
                     
@@ -86,9 +88,7 @@
                   <nav class="navbar navbar-expand-lg navbar-light">
                      <div class="full">
                         <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
-                        <div class="logo_section">
-                           <a href="index.html"><img class="img-responsive" src="{% static 'vote/images/logo/logo.png' %}" alt="#" /></a>
-                        </div>
+                        
                         <div class="right_topbar">
                            <div class="icon_info">
                               <ul class="user_profile_dd">
@@ -108,6 +108,7 @@
                <!-- dashboard inner -->
                <div class="midde_cont">
                   <div class="container-fluid">
+                     {% block title %}
                      <div class="row column_title">
                         <div class="col-md-12">
                            <div class="page_title">
@@ -115,7 +116,7 @@
                            </div>
                         </div>
                      </div>
-
+                     {% endblock %}
                      {% block content %}
                      <div class="row column1">
                         <div class="col-md-6 col-lg-3">
