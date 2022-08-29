@@ -18060,12 +18060,12 @@ a.navbar-brand img {
 /*--/banner--*/
 .w3l-banner-content {
   background: var(--bg-color);
-  min-height: 660px;
+  min-height: 600px;
   z-index: 0;
   position: relative;
   display: grid;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 110px;
 }
 
 .bannerhny-info {
@@ -18529,7 +18529,7 @@ ul.w3l-right-book li span {
 
 /*--/w3l-inner-page--*/
 .breadcrumb-bg {
-  background: url(../images/2.jpg) no-repeat top;
+  background: url('/static/voterapp/assets/images/2.jpg') no-repeat top;
   -ms-background-size: cover;
   background-size: cover;
   z-index: 0;

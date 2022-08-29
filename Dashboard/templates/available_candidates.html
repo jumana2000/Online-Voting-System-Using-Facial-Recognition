@@ -20,11 +20,11 @@
                       <th>#</th>
                       <th>Candidate name</th>
                       <th>Party name</th>
-                      <th>Member support</th>
+                      <th>Membe<br>support</th>
                       <th>Age</th>
                       <th>Email</th> 
-                     <th>Mobile</th>
-                     <th>Address</th>
+                      <th>Mobile</th>
+                      <th>Address</th>
                       <th>Candidate photo</th>
                       <th>Party logo</th>
                       <th>Actions</th>
@@ -41,8 +41,8 @@
                       <td>{{i.age}}</td>
                       <td>{{i.email}}</td> 
                       <td>{{i.mobile}}</td>
-                     <td>{{i.address}}</td>
-                      <td><img src="{{i.candidate_photo.url}}" style="width: 40px; height: 40px;" alt=""></td>
+                      <td>{{i.address}}</td>
+                      <td style="text-align: center;"><img src="{{i.candidate_photo.url}}" style="width: 50px; height: 50px;" alt=""></td>
                       <td><img src="{{i.party_logo.url}}" style="width: 40px; height: 40px;" alt=""></td>
                       <td>
                         <a href="{% url 'view_candidate' pk=i.id %}">
@@ -68,6 +68,5 @@
  </div>
 </div>
 </div>
-
 
 {% endblock %}
