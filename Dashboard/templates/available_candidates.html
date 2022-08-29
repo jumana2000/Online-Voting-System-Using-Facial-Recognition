@@ -22,14 +22,13 @@
                       <th>Party name</th>
                       <th>Member support</th>
                       <th>Age</th>
-                      <!-- <th>Email</th> -->
-                      <!-- <th>Mobile</th> -->
-                      <!-- <th>Address</th> -->
+                      <th>Email</th> 
+                     <th>Mobile</th>
+                     <th>Address</th>
                       <th>Candidate photo</th>
                       <th>Party logo</th>
-                      <th>View</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
+                      <th>Actions</th>
+                      
                    </tr>
                 </thead>
                 <tbody>
@@ -40,31 +39,24 @@
                       <td>{{i.party_name}}</td>
                       <td>{{i.member_support}}</td>
                       <td>{{i.age}}</td>
-                      <!-- <td>{{i.email}}</td> -->
-                      <!-- <td>{{i.mobile}}</td> -->
-                      <!-- <td>{{i.address}}</td> -->
-                      <td><img src="{{i.candidate_photo.url}}" style="width: 50px; height: 50px;" alt=""></td>
-                      <td><img src="{{i.party_logo.url}}" style="width: 50px; height: 50px;" alt=""></td>
+                      <td>{{i.email}}</td> 
+                      <td>{{i.mobile}}</td>
+                     <td>{{i.address}}</td>
+                      <td><img src="{{i.candidate_photo.url}}" style="width: 40px; height: 40px;" alt=""></td>
+                      <td><img src="{{i.party_logo.url}}" style="width: 40px; height: 40px;" alt=""></td>
                       <td>
                         <a href="{% url 'view_candidate' pk=i.id %}">
-                           <button type="button" class="btn" style="background: #ff5722;color: white;">
-                             View
-                           </button>
+                           <i class="fa fa-eye"></i>
                         </a>
-                      </td>
-                      <td>
-                        <!-- <a href=""> 
-                        <button type="button" class="btn" style="background: #ff5722;color: white;">
-                        Edit
-                        </button>
-                        </a> -->
-                     </td>
-                      <td>
-                         <a href="{% url 'delete_candidate' pk=i.id %}"> 
-                         <button type="button" class="btn" style="background: #ff5722;color: white;">
-                          Delete
-                         </button>
-                         </a>
+                    
+                        <a href="{% url 'edit_candidate' pk=i.id %}">
+                           <i class="fa fa-edit"></i>
+                        </a>
+                    
+                     
+                        <a href="{% url 'delete_candidate' pk=i.id %}">
+                           <i class="fa fa-trash"></i>
+                        </a>
                       </td>
                      </tr>
                 {% endfor %}

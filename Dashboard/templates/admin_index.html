@@ -49,6 +49,7 @@
                   </div>
                   <div class="sidebar_user_info">
                      <div class="icon_setting"></div>
+                     {% if "username_a" in request.session %}
                      <div class="user_profle_side">
                         <div class="user_img"><img class="img-responsive" src="{% static 'vote/images/layout_img/user_img.jpg' %}" style="width: 75px; height: 75px;" alt="#" /></div>
                         <div class="user_info">
@@ -56,6 +57,14 @@
                            <p><span class="online_animation"></span> Online</p>
                         </div>
                      </div>
+                     {% else %}
+                     <div class="user_profle_side">
+                        <div class="user_info">
+                           
+                           <p style="color:white; "><i class="fa fa-circle" aria-hidden="true"></i> Offline</p>
+                        </div>
+                     </div>
+                     {% endif %}
                   </div>
                </div>
                <div class="sidebar_blog_2">
