@@ -11,5 +11,6 @@ def index(request):
 def about(request):
     return render(request,'about.html')
 
-def candidate_detail(request):
-    return render(request,'candidate_detail.html')
+def candidate_detail(request,id):
+    data = CandidateRegister.objects.filter(id=id)
+    return render(request,'candidate_detail.html',{'data':data})

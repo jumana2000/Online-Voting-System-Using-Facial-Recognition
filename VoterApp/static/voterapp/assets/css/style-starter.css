@@ -18529,7 +18529,7 @@ ul.w3l-right-book li span {
 
 /*--/w3l-inner-page--*/
 .breadcrumb-bg {
-  background: url('/static/voterapp/assets/images/2.jpg') no-repeat top;
+  background: url('/static/voterapp/assets/images/2.webp') no-repeat top;
   -ms-background-size: cover;
   background-size: cover;
   z-index: 0;

@@ -3,10 +3,10 @@
 <section class="w3l-inner-page-breadcrumb">
     <div class="breadcrumb-bg py-5">
       <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
-        <h2 class="title pt-5">About</h2>
+        <h2 class="title pt-5">Candidate Detail</h2>
         <ul class="breadcrumbs-custom-path mt-3 text-center">
-          <li><a href="index.html">Home</a></li>
-          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> About </li>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Candidate Detail </li>
         </ul>
       </div>
     </div>
@@ -16,15 +16,15 @@
 
     <!---728x90--->
 
-     
-    </div>
+  </div>
+  {% for i in data %}
   <section class="w3l-about-ab" id="about">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-4 py-2">
         <div class="row">
           <div class="col-lg-5 left-wthree-img">
-            <h6 class="title-subhny">About Us</h6>
-            <h3 class="title-w3l mb-4">We Focus On Brands, Products & Campaigns!</h3>
+            <h6 class="title-subhny">About <strong>{{i.candidate_name}}</strong></h6>
+            <img class="p-5" src="{{i.candidate_photo.url}}" style="border-radius: 50%;" alt="">
 
           </div>
           <div class="col-lg-7 pl-lg-5 align-self">
@@ -42,6 +42,7 @@
       </div>
     </div>
   </section>
+  {% endfor %}
  <!-- /w3l-content-2-->
  <div style="margin: 8px auto; display: block; text-align:center;">
 

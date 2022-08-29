@@ -42,7 +42,7 @@
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="services.html">Services</a>
+                <a class="nav-link" href="">Register</a>
               </li>
 
               <li class="nav-item">
@@ -96,10 +96,10 @@
                 <a href="#url"><img src="{% static 'voterapp/assets/images/blank_profile.webp' %}" alt="" class="img-fluid" /></a>
               </div>
               <div class="column-btm">
-                <h3 class="name-pos"><a href="#url">{{i.candidate_name}}</a></h3>
+                <h3 class="name-pos"><a href="{% url 'candidate_detail' id=i.id %}">{{i.candidate_name}}</a></h3>
                 <p>Party : {{i.party_name}}</p>
                 <div class="social">
-                  <a href="{% url 'candidate_detail' %}" class="twitter"><span class="fa fa-eye" aria-hidden="true"></span></a>
+                  <a href="{% url 'candidate_detail' id=i.id %}" class="twitter"><span class="fa fa-eye" aria-hidden="true"></span></a>
                 </div>
               </div>
             </div>
