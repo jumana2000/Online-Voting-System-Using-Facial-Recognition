@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% block content %}
+  <section class="w3l-inner-page-breadcrumb">
+    <div class="breadcrumb-bg py-5">
+      <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+        <h2 class="title pt-5">Sign In</h2>
+        <ul class="breadcrumbs-custom-path mt-3 text-center">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Sign In </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- //w3l-inner-page-breadcrumb-->
+
+  <section class="w3l-about-ab" id="about">
+    <div class="container">
+    <div class="reply mt-5" id="reply">
+        <h3 class="post-content-title py-3">Sign In Here</h3>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group reply">
+              
+                <div class="input-grids row mt-md-4 mt-3">
+
+                    <div class="form-group col-lg-6">
+                        <input type="text" name="username" class="form-control" placeholder="Username*"
+                            required="">
+                    </div>
+                    
+                </div>
+
+                <div class="input-grids row mt-md-4 mt-3">
+        
+                <div class="form-group col-lg-6">
+                    <input type="password" name="password" class="form-control" placeholder="Password*"
+                        required="">
+                </div>
+
+                </div>
+
+                <div class="text-left pt-4">
+                    <button class="btn btn-primary btn-style" type="submit">Submit</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    </div>
+  </section>
+ <!-- /w3l-content-2-->
+ <div style="margin: 8px auto; display: block; text-align:center;">
+
+  <!---728x90--->
+   
+  </div>
+
+ 
+  <div style="margin: 8px auto; display: block; text-align:center;">
+
+    <!---728x90--->
+     
+    </div>
+  <!--/team-sec-->
+
+  <!--//team-sec-->
+  {% endblock %}
+  
+
+  

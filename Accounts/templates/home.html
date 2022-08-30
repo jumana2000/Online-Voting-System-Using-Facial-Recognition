@@ -41,15 +41,24 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
+              {% if user.username %}
+
+              <li class="nav-item nav-link">
+                 Welcome, {{user.username}}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+
+              {% else %}
+
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
               </li>
 
+              {% endif %}
               
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'adlogin' %}">Sign In</a>
-              </li>
-          
+
             </ul>
 
           </div>

@@ -27,9 +27,36 @@ def register_data(request):
         return HttpResponse("Not registered")
 
 
-
 def addFace(face_id):
     face_id = face_id
     faceRecognition.faceDetect(face_id)
     faceRecognition.trainFace()
     return redirect('/')
+
+def adlogin(request):
+    return render(request,'login.html')
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username)
+        if VoterRegister.objects.filter(username=username,password=password).exists():
+            face_id = faceRecognition.recognizeFace()
+            print(face_id)
+            request.session['username'] = username
+            request.session['password'] = password
+            return redirect('greeting' ,str(face_id))
+       
+    else:
+        return HttpResponse("Not Registered")
+
+def Greeting(request,face_id):
+    face_id = int(face_id)
+    context ={
+        'user' : VoterRegister.objects.get(face_id = face_id)
+    }
+    return render(request,'home.html',context=context)
+
+def logout(request):
+    return redirect('index')

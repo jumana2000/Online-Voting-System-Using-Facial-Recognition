@@ -8,6 +8,8 @@ class VoterRegister(models.Model):
     age = models.IntegerField()
     email = models.EmailField()
     address = models.TextField(max_length=100)
+    username = models.CharField(max_length=20)
+    password = models.CharField(max_length=20)
 
     def __str__(self):
         return self.voter_name
