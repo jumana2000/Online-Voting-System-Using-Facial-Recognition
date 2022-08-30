@@ -1,0 +1,80 @@
+{% extends 'index.html' %}
+{% block content %}
+  <section class="w3l-inner-page-breadcrumb">
+    <div class="breadcrumb-bg py-5">
+      <div class="container pt-lg-5 pt-md-3 p-lg-4 pb-md-3 my-lg-3">
+        <h2 class="title pt-5">Sign Up</h2>
+        <ul class="breadcrumbs-custom-path mt-3 text-center">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Sign Up </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- //w3l-inner-page-breadcrumb-->
+
+  <section class="w3l-about-ab" id="about">
+    <div class="container">
+    <div class="reply mt-5" id="reply">
+        <h3 class="post-content-title py-3">Sign Up Here</h3>
+        <form action="{% url 'register_data' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group reply">
+              
+                <div class="input-grids row mt-md-4 mt-3">
+
+                    <div class="form-group col-lg-6">
+                        <input type="text" name="face_id" class="form-control" placeholder="Voter ID*"
+                            required="">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input type="text" name="voter_name" class="form-control" placeholder="Voter Name*"
+                            required="">
+                    </div>
+                </div>
+
+                <div class="input-grids row mt-md-4 mt-3">
+
+                    <div class="form-group col-lg-6">
+                        <input type="text" name="age" class="form-control" placeholder="Age*"
+                            required="">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input type="email" name="email" class="form-control" placeholder="Email ID*"
+                            required="">
+                    </div>
+                </div>
+
+                <div class="">
+                    <textarea class="form-control" name="address" placeholder="Your Address"
+                    id="exampleFormControlTextarea1" rows="4"></textarea>
+                </div> 
+
+                <div class="text-right pt-4">
+                    <button class="btn btn-primary btn-style" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+  </section>
+ <!-- /w3l-content-2-->
+ <div style="margin: 8px auto; display: block; text-align:center;">
+
+  <!---728x90--->
+   
+  </div>
+
+ 
+  <div style="margin: 8px auto; display: block; text-align:center;">
+
+    <!---728x90--->
+     
+    </div>
+  <!--/team-sec-->
+
+  <!--//team-sec-->
+  {% endblock %}
+  
+
+  
