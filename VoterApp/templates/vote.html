@@ -33,9 +33,8 @@
                   <td>
                     <form action="{% url 'submit' %}" method="POST">
                       {% csrf_token %}
-                      <input type="hidden" name="candidate_name" id="candidate_name" value="{{i.candidate_name}}">
-                      <input type="hidden" value="{{i.party_name}}" id="party_name">
-                      <input type="hidden" value="{{request.session.username}}" name="username" id="username">
+                      <input type="hidden" name="candidate_id" id="candidate_id" value="{{i.id}}">
+                      <input type="hidden" value="{{request.session.id}}" name="userid" id="userid">
                       <input type="submit" class="btn btn-sm btn-primary pop" value="Vote">
                     </form>  
                   </td>

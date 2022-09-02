@@ -1,14 +1,23 @@
 from django.shortcuts import render,redirect
-from  . models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+
 from django.views.generic import ListView,DetailView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
+
+from  .models import *
+from Accounts.models import VoterRegister
+from VoterApp.models import Vote
+
+from django.db.models.aggregates import Max
+
 # Create your views here.
 def admin_index(request):
-    return render(request,'admin_index.html')
+    count_voter = VoterRegister.objects.all().count()
+    count_candidate = CandidateRegister.objects.all().count()
+    return render(request,'admin_index.html',{'count_voter':count_voter,'count_candidate':count_candidate})
 
 def candidate_register(request):
     return render(request,'candidate_register.html')
@@ -67,6 +76,19 @@ class Delete_Candidate(DeleteView):
     success_url = reverse_lazy('available_candidates')
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
+
+class user_register(ListView):
+    model = VoterRegister
+    template_name = 'user_register.html'
+    context_object_name = 'data'
+
+def result(request):
+    data = CandidateRegister.objects.all()
+    max_vote = CandidateRegister.objects.all().aggregate(Max('vote_count'))
+    x = max_vote[0]
+    winner = CandidateRegister.objects.filter(vote_count=x)
+    print(winner)
+    return render(request,'result.html',{'data':data})
 
 def admin_login(request):
     return render(request,'admin_login.html')

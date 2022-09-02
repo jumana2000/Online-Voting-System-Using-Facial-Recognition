@@ -72,20 +72,16 @@
                   <ul class="list-unstyled components">
                      <li class="active">
                         <a href="{% url 'admin_index' %}"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
-                       
                      </li>
                     
                      <li><a href="{% url 'candidate_register' %}"><i class="fa fa-user-plus blue1_color"></i> <span>Candidate Registration</span></a></li>
                     
-                    
-                     <li>
-                        <a href="contact.html">
-                        <i class="fa fa-paper-plane red_color"></i> <span>Contact</span></a>
-                     </li>
-                     
                      <li><a href="{% url 'available_candidates' %}"><i class="fa fa-list purple_color2"></i> <span>Available candidates</span></a></li>
-                     <li><a href="charts.html"><i class="fa fa-bar-chart-o green_color"></i> <span>Charts</span></a></li>
-                     <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li>
+
+                     <li><a href="{% url 'user_register' %}"><i class="fa fa-user-plus blue1_color"></i> <span>Voters</span></a></li>
+
+                     <li><a href="{% url 'result' %}"><i class="fa fa-bar-chart-o green_color"></i> <span>Result</span></a></li>
+                    
                   </ul>
                </div>
             </nav>
@@ -137,8 +133,8 @@
                               </div>
                               <div class="counter_no">
                                  <div>
-                                    <p class="total_no">2500</p>
-                                    <p class="head_couter">Welcome</p>
+                                    <p class="total_no">{{count_voter}}</p>
+                                    <p class="head_couter">Voters</p>
                                  </div>
                               </div>
                            </div>
@@ -147,47 +143,18 @@
                            <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-clock-o blue1_color"></i>
+                                    <i class="fa fa-user blue1_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
                                  <div>
-                                    <p class="total_no">123.50</p>
-                                    <p class="head_couter">Average Time</p>
+                                    <p class="total_no">{{count_candidate}}</p>
+                                    <p class="head_couter">Candidates</p>
                                  </div>
                               </div>
                            </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                           <div class="full counter_section margin_bottom_30">
-                              <div class="couter_icon">
-                                 <div> 
-                                    <i class="fa fa-cloud-download green_color"></i>
-                                 </div>
-                              </div>
-                              <div class="counter_no">
-                                 <div>
-                                    <p class="total_no">1,805</p>
-                                    <p class="head_couter">Collections</p>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                           <div class="full counter_section margin_bottom_30">
-                              <div class="couter_icon">
-                                 <div> 
-                                    <i class="fa fa-comments-o red_color"></i>
-                                 </div>
-                              </div>
-                              <div class="counter_no">
-                                 <div>
-                                    <p class="total_no">54</p>
-                                    <p class="head_couter">Comments</p>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                       
                      </div>
                      {% endblock %}
                      

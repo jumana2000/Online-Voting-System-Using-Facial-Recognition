@@ -24,14 +24,16 @@ def vote(request):
 def submit(request):
     if request.method == "POST":
         try:
-            candidate_name = request.POST.get('candidate_name')
-            username = request.POST.get('username')
+            candidate_id = request.POST.get('candidate_id')
+            userid = request.POST.get('userid')
             count = 1
-            data = Vote(candidate_name=candidate_name,username=username,count=count)
+            data = Vote(candidate_id=CandidateRegister.objects.get(id=candidate_id),userid=VoterRegister.objects.get(id=userid),count=count)
+            CandidateRegister.objects.filter(id=candidate_id).update(vote_count=1)
             data.save()
             messages.success(request,'Success')
             del request.session['username']
             del request.session['password']
+            del request.session['id']
             return redirect('index')
         except KeyError:
             return HttpResponse("Already Voted")

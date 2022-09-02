@@ -61,17 +61,14 @@ def Greeting(request,face_id):
         'user' : VoterRegister.objects.filter(face_id = face_id),
         }
         candidate_list = CandidateRegister.objects.all()
-        data = VoterRegister.objects.filter(face_id=face_id).values('username','password').first()
+        data = VoterRegister.objects.filter(face_id=face_id).values('username','password','id').first()
         request.session['username'] = data['username']
         request.session['password'] = data['password']
+        request.session['id'] = data['id']
         return render(request,'home.html',{'context':context,'candidate_list':candidate_list})
     elif VoterRegister.objects.filter(face_id = 1):
         return HttpResponse("Unauthorised access")
     else:
         return HttpResponse("Unauthorised access")
 
-def logout(request):
-    del request.session['username']
-    del request.session['password']
-    return redirect('index')
 

@@ -41,15 +41,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
-              {% if request.session.username %}
 
+              {% if request.session.username %}
               <li class="nav-item">
                 <a class="nav-link" href="#">Welcome, {{request.session.username}}</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
-
               {% else %}
 
               <li class="nav-item">
@@ -135,9 +131,7 @@
     <section class="w3l-copyright">
       <div class="container">
         <div class="row bottom-copies">
-          <p class="col-lg-12 text-center">digivote@mail.com © 2022 DigiVote. All rights reserved. Design by <a
-              href="https://w3layouts.com/" target="_blank">
-              W3Layouts</a></p>
+          <p class="col-lg-12 text-center">digivote@mail.com © {% now 'Y' %} DigiVote. All rights reserved.</p>
         </div>
       </div>
     </section>

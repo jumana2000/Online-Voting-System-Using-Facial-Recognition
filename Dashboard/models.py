@@ -13,8 +13,7 @@ class CandidateRegister(models.Model):
     address = models.TextField(max_length=50)
     candidate_photo = models.ImageField(upload_to='candidate_photo')
     party_logo = models.ImageField(upload_to='party_logo')
+    vote_count = models.IntegerField(default=0)
 
 
-    def __str__(self):
-        return self.candidate_name
 
