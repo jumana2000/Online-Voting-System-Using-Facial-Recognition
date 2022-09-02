@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+ <div class="container">
+  <section class="w3l-team">
+    <div class="team py-5">
+      <div class="container py-md-5 py-3">
+        <div class="title-content text-center">
+          <h3 class="title-w3l mb-sm-5 mb-4 pb-sm-o pb-2 pt-5 text-center">Candidates</h3>
+        </div>
+        <div class="row team-row pt-3 mt-3">
+         
+         
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Candidate Name</th>
+                  <th scope="col">Party Logo</th>
+                  <th scope="col">Vote</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in data %}
+               
+                  
+                <tr>
+                  <th scope="row">{{forloop.counter}}</th>
+                  
+                  <td style="width:30%"><span><img src="{{i.candidate_photo.url}}" style="width: 40px; height: 40px; border-radius: 50%;"></span>&nbsp;{{i.candidate_name}}</td>
+                  <td><span><img src="{{i.party_logo.url}}" style="width: 40px; height: 40px; border-radius: 50%;"></span>&nbsp;{{i.party_name}}</td>
+                  <td>
+                    <form action="{% url 'submit' %}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="candidate_name" id="candidate_name" value="{{i.candidate_name}}">
+                      <input type="hidden" value="{{i.party_name}}" id="party_name">
+                      <input type="hidden" value="{{request.session.username}}" name="username" id="username">
+                      <input type="submit" class="btn btn-sm btn-primary pop" value="Vote">
+                    </form>  
+                  </td>
+                </tr>
+              
+                {% endfor %}
+              </tbody>
+            </table>
+        
+     
+        </div> 
+      </div>
+    </div>
+  </section>
+</div>
+  <!-- //bottom-grids-->
+  <!--/Content-mid-->
+  
+   
+{% endblock %}

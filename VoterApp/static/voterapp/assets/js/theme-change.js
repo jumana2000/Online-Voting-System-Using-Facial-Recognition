@@ -1,4 +1,4 @@
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+var toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 const currentTheme = localStorage.getItem('theme');
 
 if (currentTheme) {
@@ -18,5 +18,8 @@ function switchTheme(e) {
           localStorage.setItem('theme', 'light');
     }    
 }
+if(toggleSwitch){
+    toggleSwitch.addEventListener('change', switchTheme, false);
+}
 
-toggleSwitch.addEventListener('change', switchTheme, false);
+

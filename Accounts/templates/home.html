@@ -41,10 +41,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
-              {% if user.username %}
+              {% if request.session.username %}
 
-              <li class="nav-item nav-link">
-                 Welcome, {{user.username}}
+              <li class="nav-item">
+                <a class="nav-link" href="#">Welcome, {{request.session.username}}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -56,6 +56,9 @@
                 <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
               </li>
 
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+              </li>
               {% endif %}
               
 
@@ -83,6 +86,10 @@
           <p class="pr-lg-5 mt-md-4 mt-3">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui eligendi vitae sit.Ea
             ipsum sed consequuntur illum facere.
           </p>
+          <div class="mb-4"></div>
+          <h1>Voting Just A Click Away</h1>
+          <a class="btn btn-style mt-sm-3 mt-2 mr-2" href="{% url 'vote' %}">
+            Vote</a>
         </div>
         
         <div class="col-lg-6">
@@ -99,7 +106,7 @@
           <h3 class="title-w3l mb-sm-5 mb-4 pb-sm-o pb-2 text-center">Our Candidates</h3>
         </div>
         <div class="row team-row pt-3 mt-3">
-          {% for i in data %}
+          {% for i in candidate_list %}
           <div class="col-lg-3 col-6 team-wrap mt-4 pt-lg-2">
             <div class="team-info">
               <div class="column position-relative img-circle">
@@ -108,9 +115,7 @@
               <div class="column-btm">
                 <h3 class="name-pos"><a href="{% url 'candidate_detail' id=i.id %}">{{i.candidate_name}}</a></h3>
                 <p>Party : {{i.party_name}}</p>
-                <div class="social">
-                  <a href="{% url 'candidate_detail' id=i.id %}" class="twitter"><span class="fa fa-eye" aria-hidden="true"></span></a>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -124,7 +129,7 @@
 
 {% endblock %}
   <!-- footer -->
-  <footer class="w3l-footer-29-main">
+  <footer class="w3l-footer-29-main fixed-bottom">
     <!-- //footer -->
     <!-- copyright -->
     <section class="w3l-copyright">
@@ -204,7 +209,7 @@
     });
   </script>
   <!--//MENU-JS-->
-
+  
 
   <script src="{% static 'voterapp/assets/js/bootstrap.min.js' %}"></script>
 

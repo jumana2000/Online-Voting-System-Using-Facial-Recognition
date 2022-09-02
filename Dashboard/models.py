@@ -17,3 +17,4 @@ class CandidateRegister(models.Model):
 
     def __str__(self):
         return self.candidate_name
+

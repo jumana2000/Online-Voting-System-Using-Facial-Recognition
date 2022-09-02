@@ -41,15 +41,25 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
+              {% if request.session.username %}
+
+              <li class="nav-item nav-link">
+                 Welcome, {{request.session.username}}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+
+              {% else %}
+
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
               </li>
 
-              
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'adlogin' %}">Sign In</a>
+                <a class="nav-link" href="{% url 'login' %}">Sign In</a>
               </li>
-          
+              {% endif %}
             </ul>
 
           </div>
@@ -197,8 +207,22 @@
   <!--//MENU-JS-->
 
 
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal("Done!", "Voted Successfully", "success");
+    </script>
+    {% endif %}
+    {% endfor %}
+
+    <script src="{% static 'voterapp/js/newscript.js' %}"></script>   
+    
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="{% static 'voterapp/assets/js/bootstrap.min.js' %}"></script>
 
 </body>
 
 </html>
+
