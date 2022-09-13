@@ -85,10 +85,12 @@ class user_register(ListView):
 def result(request):
     data = CandidateRegister.objects.all()
     max_vote = CandidateRegister.objects.all().aggregate(Max('vote_count'))
-    x = max_vote[0]
+    print(max_vote)
+    x = max_vote['vote_count__max']
+    print(x)
     winner = CandidateRegister.objects.filter(vote_count=x)
     print(winner)
-    return render(request,'result.html',{'data':data})
+    return render(request,'result.html',{'data':data,'winner':winner})
 
 def admin_login(request):
     return render(request,'admin_login.html')

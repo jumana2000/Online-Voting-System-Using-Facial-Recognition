@@ -46,10 +46,6 @@
               <li class="nav-item nav-link">
                  Welcome, {{request.session.username}}
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
-
               {% else %}
 
               <li class="nav-item">
@@ -59,13 +55,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Sign In</a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'view_result' %}">View Result</a>
+              </li>
+
               {% endif %}
             </ul>
 
           </div>
-          <!-- toggle switch for light and dark theme -->
-        
-          <!-- //toggle switch for light and dark theme -->
+          
         </nav>
       </div>
     </header>

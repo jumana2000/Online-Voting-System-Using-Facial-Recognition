@@ -45,11 +45,11 @@ def login(request):
     print(face_id)
     if VoterRegister.objects.filter(date=date,face_id=face_id).exists():
         return HttpResponse("Already voted")
+    elif face_id == None:
+         return HttpResponse("Unauthorised access")
+    elif VoterRegister.objects.filter(face_id = 1):
+        return HttpResponse("Unauthorised access")
     else:
-        data = VoterRegister.objects.filter(face_id=face_id).values('username','password').first()
-        request.session['username'] = data['username']
-        request.session['password'] = data['password']
-        print(data)
         return redirect('greeting' ,str(face_id))
 
 def Greeting(request,face_id):

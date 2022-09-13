@@ -41,6 +41,17 @@
           </div>
        </div>
     </div>
+
+    <div class="container">
+      {% for i in winner %}
+      <h2>Election Result</h2>
+      <div class="pt-4">
+      <img class="img-responsive" src="{{ MEDIA_URL }}{{ i.candidate_photo.url }}" style="width: 60px; height: 60px; border-radius: 50%;" alt="">
+      <h1>{{i.candidate_name}}</h1>
+      </div>
+      <p>Total Votes : {{i.vote_count}}</p>
+      {% endfor %}
+    </div>
  </div>
 </div>
 </div>

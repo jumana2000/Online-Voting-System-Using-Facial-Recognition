@@ -7,4 +7,5 @@ urlpatterns = [
     path('candidate_detail/<int:id>/',views.candidate_detail,name='candidate_detail'),
     path('vote/',views.vote,name='vote'),
     path('submit/',views.submit,name='submit'),
+    path('view_result/',views.view_result,name='view_result')
 ]

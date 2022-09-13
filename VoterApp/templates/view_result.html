@@ -1,5 +1,47 @@
 {% extends 'index.html' %}
 {% block content %}
+<div class="container">
+    <section class="w3l-team">
+      <div class="team py-5">
+        <div class="container py-md-5 py-3">
+          <div class="title-content text-center">
+            <h3 class="title-w3l mb-sm-5 mb-4 pb-sm-o pb-2 pt-5 text-center">Election Result</h3>
+          </div>
+          <div class="row team-row pt-3">
+           
+             <!-- Create a card -->
+
+             {% for i in data %}
+    <div class="card" style="width: 22rem; margin:0 auto;">
+        <img class="card-img-top" style="border-top-left-radius: calc(0.25rem - 1px);
+        border-top-right-radius: calc(0.25rem - 1px);"
+            src="{{i.candidate_photo.url}}"
+                    alt="Card image cap">
+          
+        <div class="card-body">
+            <h5 class="card-title">
+                {{i.candidate_name}}
+            </h5>
+              
+            <p class="card-text">
+                {{i.party_name}}
+            </p>
+            
+        </div>
+          
+        <div class="card-footer text-center">
+              
+            <p style="color:green;">Won by ### votes</p>
+              
+        </div>
+    </div>
+
+{% endfor %}
+        </div> 
+    </div>
+  </div>
+</section>
+</div>
 
 
 {% endblock %}

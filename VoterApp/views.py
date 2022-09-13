@@ -3,6 +3,7 @@ from Dashboard.models import *
 from django.shortcuts import render,redirect
 from . models import *
 from django.contrib import messages
+from django.db.models.aggregates import Max
 
 # Create your views here.
 
@@ -37,3 +38,10 @@ def submit(request):
             return redirect('index')
         except KeyError:
             return HttpResponse("Already Voted")
+
+def view_result(request):
+    data = CandidateRegister.objects.all().aggregate(Max('vote_count'))
+    x = data['vote_count__max']
+    print(x)
+    data = CandidateRegister.objects.filter(vote_count=x)
+    return render(request,'view_result.html',{'data':data})
