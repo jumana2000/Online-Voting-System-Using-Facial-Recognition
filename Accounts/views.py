@@ -3,7 +3,8 @@ from . models import *
 from Dashboard.models import *
 from django.http import HttpResponse
 from Accounts.detection import FaceRecognition
-import datetime
+from django.contrib import messages
+
 # Create your views here.
 
 faceRecognition = FaceRecognition()
@@ -28,7 +29,7 @@ def register_data(request):
         return redirect('index')
     else:
         return HttpResponse("Not registered")
- 
+
 
 def addFace(face_id):
     face_id = face_id
@@ -36,39 +37,30 @@ def addFace(face_id):
     faceRecognition.trainFace()
     return redirect('index')
 
-# def adlogin(request):
-#     return render(request,'login.html')
-
 def login(request):
-    date = datetime.datetime.now()
-    face_id = faceRecognition.recognizeFace()
-    print(face_id)
-    if VoterRegister.objects.filter(date=date,face_id=face_id).exists():
-        return HttpResponse("Already voted")
-    elif face_id == None:
-         return HttpResponse("Unauthorised access")
-    elif VoterRegister.objects.filter(face_id = 1):
-        return HttpResponse("Unauthorised access")
+    if request.method=="POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if VoterRegister.objects.filter(username=username,password=password).exists():
+            data = VoterRegister.objects.filter(username=username,password=password).values('face_id').first()
+            request.session['id'] = data['face_id']
+            request.session['username'] = username
+            request.session['password'] = password
+
+            face_id = faceRecognition.recognizeFace()
+           
+            return redirect('greeting' ,str(face_id))
+        else:
+            messages.error(request, 'Invalid user credentials')
+            return render(request,'login.html')  
     else:
-        return redirect('greeting' ,str(face_id))
+        return render(request,'login.html')
+
 
 def Greeting(request,face_id):
-    date = datetime.datetime.now()
-    VoterRegister.objects.filter(face_id=face_id).update(date=date)
     face_id = int(face_id)
-    if VoterRegister.objects.filter(face_id = face_id):
-        context ={
-        'user' : VoterRegister.objects.filter(face_id = face_id),
-        }
-        candidate_list = CandidateRegister.objects.all()
-        data = VoterRegister.objects.filter(face_id=face_id).values('username','password','id').first()
-        request.session['username'] = data['username']
-        request.session['password'] = data['password']
-        request.session['id'] = data['id']
-        return render(request,'home.html',{'context':context,'candidate_list':candidate_list})
-    elif VoterRegister.objects.filter(face_id = 1):
-        return HttpResponse("Unauthorised access")
-    else:
-        return HttpResponse("Unauthorised access")
-
+    data1 = VoterRegister.objects.filter(face_id = face_id)
+    data = CandidateRegister.objects.all()
+    return render(request,'home.html',{'data1':data1,'data':data})
 

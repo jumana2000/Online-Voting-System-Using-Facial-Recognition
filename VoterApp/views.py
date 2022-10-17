@@ -1,9 +1,11 @@
+from email import message
 from django.http import HttpResponse
 from Dashboard.models import *
 from django.shortcuts import render,redirect
 from . models import *
 from django.contrib import messages
 from django.db.models.aggregates import Max
+import datetime
 
 # Create your views here.
 
@@ -22,22 +24,28 @@ def vote(request):
     data = CandidateRegister.objects.all()
     return render(request,'vote.html',{'data':data})
 
-def submit(request):
-    if request.method == "POST":
-        try:
-            candidate_id = request.POST.get('candidate_id')
-            userid = request.POST.get('userid')
-            count = 1
-            data = Vote(candidate_id=CandidateRegister.objects.get(id=candidate_id),userid=VoterRegister.objects.get(id=userid),count=count)
-            CandidateRegister.objects.filter(id=candidate_id).update(vote_count=1)
-            data.save()
-            messages.success(request,'Success')
-            del request.session['username']
-            del request.session['password']
-            del request.session['id']
-            return redirect('index')
-        except KeyError:
-            return HttpResponse("Already Voted")
+def submit(request,did):
+    face_id  = request.session.get('id')
+    print(face_id)
+    date = datetime.datetime.now()
+    
+    if VoterRegister.objects.filter(face_id=face_id,date=date).exists():
+        messages.error(request, 'Already Voted')
+        del request.session['id']
+        del request.session['username']
+        del request.session['password']
+        return redirect('index')
+    else:
+        print("Did : ",did)
+        x = CandidateRegister.objects.filter(id=did).values('vote')
+        for i in x:
+            count = i['vote']
+        print(count)
+        CandidateRegister.objects.filter(id=did).update(vote=count+1)
+        date = datetime.datetime.now()
+        VoterRegister.objects.filter(face_id=face_id).update(date=date)
+        messages.success(request,'Voted Successfully')
+        return redirect('user')
 
 def view_result(request):
     data = CandidateRegister.objects.all().aggregate(Max('vote_count'))

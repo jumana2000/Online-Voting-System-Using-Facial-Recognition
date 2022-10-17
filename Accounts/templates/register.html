@@ -82,9 +82,16 @@
     <!---728x90--->
      
     </div>
-  <!--/team-sec-->
 
-  <!--//team-sec-->
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
+                    var m = "{{ message }}";
+                    swal("Sorry!", "Unauthorised Access", "error");
+                </script>
+            {% endif %}
+        {% endfor %}
   {% endblock %}
   
 

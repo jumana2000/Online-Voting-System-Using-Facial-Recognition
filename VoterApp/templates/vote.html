@@ -31,10 +31,9 @@
                   <td style="width:30%"><span><img src="{{i.candidate_photo.url}}" style="width: 40px; height: 40px; border-radius: 50%;"></span>&nbsp;{{i.candidate_name}}</td>
                   <td><span><img src="{{i.party_logo.url}}" style="width: 40px; height: 40px; border-radius: 50%;"></span>&nbsp;{{i.party_name}}</td>
                   <td>
-                    <form action="{% url 'submit' %}" method="POST">
+                    <form action="{% url 'submit' did=i.id %}" method="POST">
                       {% csrf_token %}
                       <input type="hidden" name="candidate_id" id="candidate_id" value="{{i.id}}">
-                      <input type="hidden" value="{{request.session.id}}" name="userid" id="userid">
                       <input type="submit" class="btn btn-sm btn-primary pop" value="Vote">
                     </form>  
                   </td>
