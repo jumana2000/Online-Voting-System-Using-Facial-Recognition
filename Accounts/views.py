@@ -3,7 +3,6 @@ from . models import *
 from Dashboard.models import *
 from django.http import HttpResponse
 from Accounts.detection import FaceRecognition
-from django.contrib import messages
 
 # Create your views here.
 
@@ -52,8 +51,7 @@ def login(request):
            
             return redirect('greeting' ,str(face_id))
         else:
-            messages.error(request, 'Invalid user credentials')
-            return render(request,'login.html')  
+            return render(request,'login.html',{'msg':'Invalid User Credentials'}) 
     else:
         return render(request,'login.html')
 

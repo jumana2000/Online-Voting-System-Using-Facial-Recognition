@@ -21,7 +21,7 @@
             {% csrf_token %}
             <div class="form-group reply">
               
-                <div class="input-grids row mt-md-4 mt-3">
+                <div class="input-grids row mt-md-4 mt-2">
 
                     <div class="form-group col-lg-6">
                         <input type="text" name="username" class="form-control" placeholder="Username*"
@@ -30,7 +30,7 @@
                     
                 </div>
 
-                <div class="input-grids row mt-md-4 mt-3">
+                <div class="input-grids row mt-md-4 mt-2">
         
                 <div class="form-group col-lg-6">
                     <input type="password" name="password" class="form-control" placeholder="Password*"
@@ -38,8 +38,11 @@
                 </div>
 
                 </div>
+                <div class="text-left pt-2">
+                  <p>{{msg}}</p>
+                 </div>
                 
-                <div class="text-left pt-4">
+                <div class="text-left pt-2">
                   <p>Dont have an account? <a href="{% url 'register' %}">Sign Up</a></p>
                  </div>
 
@@ -53,22 +56,18 @@
     </div>
     </div>
   </section>
- <!-- /w3l-content-2-->
- <div style="margin: 8px auto; display: block; text-align:center;">
-
-  <!---728x90--->
-   
-  </div>
-
  
-  <div style="margin: 8px auto; display: block; text-align:center;">
 
-    <!---728x90--->
-     
-    </div>
-  <!--/team-sec-->
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal("Sorry!", "Invalid user credentials", "error");
+    </script>
+    {% endif %}
+    {% endfor %}
 
-  <!--//team-sec-->
   {% endblock %}
   
 
