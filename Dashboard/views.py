@@ -9,7 +9,6 @@ from django.urls import reverse_lazy
 
 from  .models import *
 from Accounts.models import VoterRegister
-from VoterApp.models import Vote
 
 from django.db.models.aggregates import Max
 

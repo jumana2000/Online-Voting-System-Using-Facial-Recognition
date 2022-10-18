@@ -62,5 +62,11 @@ def Greeting(request,face_id):
     face_id = int(face_id)
     data1 = VoterRegister.objects.filter(face_id = face_id)
     data = CandidateRegister.objects.all()
-    return render(request,'home.html',{'data1':data1,'data':data})
+    return render(request,'home.html',{'data1':data1,'candidate_list':data})
 
+
+def logout(request):
+    del request.session['id']
+    del request.session['username']
+    del request.session['password']  
+    return redirect('index')  

@@ -35,32 +35,43 @@
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ml-lg-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
 
-              {% if request.session.username %}
-              <li class="nav-item">
-                <a class="nav-link" href="#">Welcome, {{request.session.username}}</a>
+              <li class="nav-item nav-link">
+                Welcome, {{request.session.username}}
               </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">
+                  <i class="fa fa-home"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}"><i class="fa fa-heart"></i></a>
+              </li>
+              
+              {% if request.session.username %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'view_result' %}"><i class="fa fa-archive"></i></a>
+              </li>
+             
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                  <i class="fa fa-power-off"></i>
+                </a>
+              </li>
+             
               {% else %}
 
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-user-circle"></i></a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Sign In</a>
-              </li>
-              {% endif %}
-              
-
+            {% endif %}
             </ul>
 
           </div>
+          
           <!-- toggle switch for light and dark theme -->
         
           <!-- //toggle switch for light and dark theme -->

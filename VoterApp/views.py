@@ -1,8 +1,9 @@
-from email import message
-from django.http import HttpResponse
-from Dashboard.models import *
 from django.shortcuts import render,redirect
-from . models import *
+
+from Dashboard.models import *
+from Accounts.models import *
+from .models import *
+
 from django.contrib import messages
 from django.db.models.aggregates import Max
 import datetime
@@ -31,21 +32,16 @@ def submit(request,did):
     
     if VoterRegister.objects.filter(face_id=face_id,date=date).exists():
         messages.error(request, 'Already Voted')
-        del request.session['id']
-        del request.session['username']
-        del request.session['password']
         return redirect('index')
     else:
-        print("Did : ",did)
-        x = CandidateRegister.objects.filter(id=did).values('vote')
-        for i in x:
-            count = i['vote']
+        vote = CandidateRegister.objects.filter(id=did).values('vote_count')
+        for i in vote:
+            count = i['vote_count']
         print(count)
-        CandidateRegister.objects.filter(id=did).update(vote=count+1)
-        date = datetime.datetime.now()
+        CandidateRegister.objects.filter(id=did).update(vote_count=count+1)
         VoterRegister.objects.filter(face_id=face_id).update(date=date)
         messages.success(request,'Voted Successfully')
-        return redirect('user')
+        return redirect('index')
 
 def view_result(request):
     data = CandidateRegister.objects.all().aggregate(Max('vote_count'))

@@ -33,7 +33,6 @@
                   <td>
                     <form action="{% url 'submit' did=i.id %}" method="POST">
                       {% csrf_token %}
-                      <input type="hidden" name="candidate_id" id="candidate_id" value="{{i.id}}">
                       <input type="submit" class="btn btn-sm btn-primary pop" value="Vote">
                     </form>  
                   </td>
