@@ -7,6 +7,7 @@ This system uses Facial Recognition along side traditional passwords which provi
 • Admin : Admin **manages** the entire system.
     Admin can **login** and can add the candidates, **view** the candidates, **edit** their details and **remove** the candidates.
     Admin can also **view** the **result** of the voting.
+    
 • User : Users can **login** and **cast** his **vote**. User can also **view** the **result** of the voting.
 
 # Technologies Used
